@@ -1,0 +1,19 @@
+<h1>Listing articles</h1>
+ 
+<%= link_to 'New short URL', new_url_shortener_path %>
+
+<table>
+  <tr>
+    <th>URL</th>
+    <th>Short URL</th>
+    <th></th>
+  </tr>
+ 
+  <% @url_shorteners.each do |url_shortener| %>
+    <tr>
+      <td><%= url_shortener.url %></td>
+      <td><%= url_shortener.short %></td>
+      <td><%= link_to 'Show', url_shortener_path(url_shortener) %></td>
+    </tr>
+  <% end %>
+</table>
