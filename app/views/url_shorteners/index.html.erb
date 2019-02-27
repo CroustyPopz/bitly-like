@@ -12,8 +12,10 @@
   <% @url_shorteners.each do |url_shortener| %>
     <tr>
       <td><%= url_shortener.url %></td>
-      <td><%= url_shortener.short %></td>
+      <td><a href="<%= url_shortener.url %>">localhost:3000/<%= url_shortener.short %></a></td>
       <td><%= link_to 'Show', url_shortener_path(url_shortener) %></td>
+      <td><%= link_to 'Edit', edit_url_shortener_path(url_shortener) %></td>
+      <td><%= link_to 'Destroy', url_shortener_path(url_shortener), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>

@@ -7,8 +7,13 @@ class UrlShortenersController < ApplicationController
         @url_shortener = UrlShortener.find(params[:id])
     end
 
+    def edit
+        @url_shortener = UrlShortener.find(params[:id])
+    end
+
     def new
-        @url_shortener = UrlShortener.new
+        @url_shortener = UrlShortener
+        .new
     end
 
     def create
@@ -20,6 +25,24 @@ class UrlShortenersController < ApplicationController
         else
             render 'new'
         end
+    end
+
+    def update
+        @url_shortener = UrlShortener.find(params[:id])
+       
+        if @url_shortener.update(url_shortener_params)
+          redirect_to @url_shortener
+        else
+          render 'edit'
+        end
+    end
+
+
+    def destroy
+        @url_shortener = UrlShortener.find(params[:id])
+        @url_shortener.destroy
+    
+        redirect_to url_shorteners_path
     end
 
     private
